@@ -25,26 +25,25 @@ export const createRuntime = (() => {
   return async () => {
     const connCount = runtimeCount++;
     let timer: NodeJS.Timer;
-    const next =
-        prev.then(() => {
-              console.log('creating runtime', connCount);
-              timer = setTimeout(() => {
-                throw new Error('connection timeout error');
-              }, 30000);
-            })
-            .then(() => connect({
-                    uuid: `testConn${connCount}-${id}`,
-                    runtime: {
-                      version,
-                      securityRealm: `realm${connCount}-${id}`,
-                      arguments: `--enforce-uuid-uniqueness --v=1`
-                    }
-                  }))
-            .then(fin => {
-              console.log('connected to runtime', connCount);
-              clearTimeout(timer);
-              return fin;
-            });
+    const next = prev.then(() => {
+                       console.log('creating runtime', connCount);
+                       timer = setTimeout(() => {
+                         throw new Error('connection timeout error');
+                       }, 30000);
+                     })
+                     .then(() => connect({
+                             uuid: `testConn${connCount}-${id}`,
+                             runtime: {
+                               version,
+                               securityRealm: `realm${connCount}-${id}`,
+                               arguments: `--v=1`
+                             }
+                           }))
+                     .then(fin => {
+                       console.log('connected to runtime', connCount);
+                       clearTimeout(timer);
+                       return fin;
+                     });
     prev = next;
     return next;
   };
