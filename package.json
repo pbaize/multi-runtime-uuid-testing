@@ -1,0 +1,27 @@
+{
+  "name": "multi-runtime-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --serial -T=120000 build/*test.js",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ava": "^0.25.0",
+    "hadouken-js-adapter": "^0.34.4"
+  },
+  "devDependencies": {
+    "gts": "^0.8.0",
+    "typescript": "~2.8.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "OpenfinPOC",
+        "description": "OpenFin POC",
+        "url": "http://bing.com",
+        "uuid": "OpenfinPOC-5t4sloytpbw",
+        "autoShow": true
+    },
+    "runtime": {
+        "arguments": "--inspect",
+        "version": "9.61.36.4"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Openfin POC",
+        "name": "Openfin POC"
+    }
+}
